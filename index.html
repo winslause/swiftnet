@@ -1,0 +1,2417 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Swiftnet | Fast, Reliable Internet in Nairobi</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #0f172a;
+            color: #f8fafc;
+            overflow-x: hidden;
+        }
+        
+        .glass-nav {
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            background: rgba(15, 23, 42, 0.7);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            z-index: 50;
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .hero-overlay {
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.8) 0%, rgba(15, 23, 42, 0.5) 100%);
+            backdrop-filter: blur(2px);
+        }
+        
+        .cta-btn {
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
+            transition: all 0.3s ease;
+        }
+        
+        .cta-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(59, 130, 246, 0.6);
+        }
+        
+        .secondary-btn {
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .secondary-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-3px);
+        }
+        
+        .typewriter {
+            border-right: 3px solid #3b82f6;
+            animation: blink 0.75s step-end infinite;
+        }
+        
+        @keyframes blink {
+            from, to { border-color: transparent }
+            50% { border-color: #3b82f6 }
+        }
+        
+        /* Hamburger styles */
+        .hamburger svg {
+            width: 24px;
+            height: 24px;
+            transition: transform 0.3s ease;
+        }
+        
+        .hamburger.active svg {
+            transform: rotate(90deg);
+        }
+        
+        .hamburger path {
+            transition: all 0.3s ease;
+        }
+        
+        .hamburger.active .top-path {
+            d: path('M6 6 L18 18');
+        }
+        
+        .hamburger.active .middle-path {
+            opacity: 0;
+        }
+        
+        .hamburger.active .bottom-path {
+            d: path('M6 18 L18 6');
+        }
+        
+        /* Service card animation styles */
+        .service-card {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease, box-shadow 0.3s ease;
+        }
+        
+        .service-card.animate-fade-in-up {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .service-card:nth-child(1) { transition-delay: 0.1s; }
+        .service-card:nth-child(2) { transition-delay: 0.2s; }
+        .service-card:nth-child(3) { transition-delay: 0.3s; }
+        .service-card:nth-child(4) { transition-delay: 0.4s; }
+        .service-card:nth-child(5) { transition-delay: 0.5s; }
+        .service-card:nth-child(6) { transition-delay: 0.6s; }
+
+        /* Responsive adjustments for smaller devices */
+        @media (max-width: 640px) {
+            .hero-section {
+                padding-bottom: 10rem;
+            }
+            .scroll-indicator {
+                bottom: 8rem;
+            }
+        }
+    </style>
+</head>
+<body class="relative">
+    <!-- Navbar -->
+    <nav class="glass-nav fixed w-full z-50 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16 md:h-20">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center">
+                    <div class="flex items-center">
+                        <i class="fas fa-bolt text-blue-400 text-2xl mr-2"></i>
+                        <span class="text-xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">Swiftnet</span>
+                    </div>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-center space-x-8">
+                        <a href="#" class="nav-link text-gray-300 hover:text-white px-3 py-2 text-sm font-medium">Home</a>
+                        <a href="#services" class="nav-link text-gray-300 hover:text-white px-3 py-2 text-sm font-medium">Services</a>
+                        <a href="#coverage" class="nav-link text-gray-300 hover:text-white px-3 py-2 text-sm font-medium">Coverage</a>
+                        <a href="#pricing" class="nav-link text-gray-300 hover:text-white px-3 py-2 text-sm font-medium">Pricing</a>
+                        <a href="#about" class="nav-link text-gray-300 hover:text-white px-3 py-2 text-sm font-medium">About</a>
+                        <a href="#support" class="nav-link text-gray-300 hover:text-white px-3 py-2 text-sm font-medium">Support</a>
+                        <a href="#contact" class="nav-link text-gray-300 hover:text-white px-3 py-2 text-sm font-medium">Contact</a>
+                        <button class="cta-btn text-white px-6 py-2 rounded-full text-sm font-semibold transition-all">Get Connected</button>
+                    </div>
+                </div>
+                
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                    <button class="cta-btn text-white px-4 mr-4 py-2 rounded-full text-sm font-medium">Connect</button>
+                    <button id="navbar" class="hamburger inline-flex items-center justify-center p-2 rounded-xl text-gray-400 hover:text-white focus:outline-none">
+                        <span class="sr-only">Open main menu</span>
+                        <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path class="top-path" d="M4 6h16"></path>
+                            <path class="middle-path" d="M4 12h16"></path>
+                            <path class="bottom-path" d="M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu Bar -->
+        <div id="mobile-menu" class="md:hidden hidden bg-gray-900/95 backdrop-blur-md">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-white">Home Internet</a>
+                <a href="#services" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white">Services</a>
+                <a href="#coverage" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white">Coverage</a>
+                <a href="#pricing" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white">Pricing</a>
+                <a href="#about" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white">About</a>
+                <a href="#support" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white">Support</a>
+                <a href="#contact" class="block px-3 py-2 rounded-md text-base font-medium">Contact</a>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section class="hero-section relative h-[120vh] flex items-center justify-center overflow-hidden pt-28 md:pt-28 pb-28 md:pb-36">
+        <!-- Background Animation -->
+        <div class="absolute inset-0 bg-gradient-to-br from-blue-900/20 to-purple-900/20">
+            <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1623479322729-28b25c16b011?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGA%3D%3D&auto=format&fit=crop&w=1740&q=80')] bg-cover bg-center opacity-20"></div>
+            <div class="absolute inset-0 bg-[url('https://assets.codepen.io/1468070/circuit-board.svg')] opacity-10"></div>
+        </div>
+        
+        <!-- Glass Overlay -->
+        <div class="hero-overlay absolute inset-0 z-0"></div>
+        
+        <!-- Hero Content -->
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10 text-center">
+            <div class="max-w-3xl mx-auto">
+                <h1 class="text-4xl md:text-6xl font-bold mb-6 leading-tight" style="padding-top: 60px !important; margin-top: 40px !important;">
+                    <span class="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">Fast, Reliable</span>
+                    <span class="typewriter inline-block">Internet in Nairobi</span>
+                </h1>
+                <p class="text-lg md:text-xl text-gray-300 mb-10 max-w-2xl mx-auto">
+                    Experience lightning-fast fiber and wireless internet solutions for your home or business. 
+                    Unmatched speeds, 24/7 support, and affordable pricing.
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center gap-4">
+                    <button class="cta-btn px-8 py-3 rounded-full text-white font-semibold text-lg">
+                        Explore Plans <i class="fas fa-arrow-right ml-2"></i>
+                    </button>
+                    <button class="secondary-btn px-8 py-3 rounded-full text-white font-semibold text-lg">
+                        Book a Connection <i class="fas fa-calendar-alt ml-2"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Stats Bar -->
+            <div class="mt-4 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto" style="padding-bottom: 60px !important; margin-bottom: 40px !important;">
+                <div class="bg-slate-800/50 backdrop-blur-sm p-4 rounded-lg border border-slate-700/50">
+                    <div class="text-blue-400 text-3xl font-bold">99.9%</div>
+                    <div class="text-sm text-gray-400">Uptime</div>
+                </div>
+                <div class="bg-slate-800/50 backdrop-blur-sm p-4 rounded-lg border border-slate-700/50">
+                    <div class="text-blue-400 text-3xl font-bold">1Gbps</div>
+                    <div class="text-sm text-gray-400">Max Speed</div>
+                </div>
+                <div class="bg-slate-800/50 backdrop-blur-sm p-4 rounded-lg border border-slate-700/50">
+                    <div class="text-blue-400 text-3xl font-bold">24/7</div>
+                    <div class="text-sm text-gray-400">Support</div>
+                </div>
+                <div class="bg-slate-800/50 backdrop-blur-sm p-4 rounded-lg border border-slate-700/50">
+                    <div class="text-blue-400 text-3xl font-bold">10K+</div>
+                    <div class="text-sm text-gray-400">Customers</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Scroll Indicator -->
+        <div style="display: none;" class="scroll-indicator absolute bottom-24 md:bottom-28 left-1/2 transform -translate-x-1/2 animate-bounce z-20">
+            <a href="#services" class="text-gray-400 hover:text-white">
+                <i class="fas fa-chevron-down text-2xl"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- Our Services Section -->
+    <section id="services" class="relative py-16 md:py-20 bg-slate-900 overflow-hidden">
+        <!-- Decorative elements -->
+        <div class="absolute top-0 left-0 w-full h-full opacity-10">
+            <div class="absolute top-20 left-10 w-40 h-40 bg-blue-500 rounded-full filter blur-3xl opacity-20"></div>
+            <div class="absolute bottom-10 right-10 w-60 h-60 bg-purple-500 rounded-full filter blur-3xl opacity-20"></div>
+            <div class="absolute top-1/2 left-1/2 w-80 h-80 bg-indigo-500 rounded-full filter blur-3xl opacity-10"></div>
+        </div>
+        
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
+            <!-- Section Header -->
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">
+                    <span class="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">Our Premium</span> Internet Services
+                </h2>
+                <p class="text-lg text-gray-400 max-w-2xl mx-auto">
+                    Tailored solutions for every need, from high-speed home internet to robust business connectivity.
+                </p>
+            </div>
+            
+            <!-- Services Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
+                <!-- Service Card 1 -->
+                <div class="service-card group bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 rounded-xl p-8 transition-all duration-300 hover:border-blue-400/30 hover:transform hover:-translate-y-2">
+                    <div class="w-14 h-14 mb-6 bg-blue-500/10 rounded-lg flex items-center justify-center group-hover:bg-blue-500/20 transition-all duration-300">
+                        <i class="fas fa-home text-2xl text-blue-400 group-hover:text-blue-300 transition-all duration-300"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3 text-white">Home Internet</h3>
+                    <p class="text-gray-400 mb-6">Lightning-fast fiber and wireless internet for seamless streaming, gaming, and browsing.</p>
+                    <a href="https://wa.me/+254769525570?text=I'm%20interested%20in%20Home%20Internet" class="inline-flex items-center text-blue-400 group-hover:text-blue-300 transition-all duration-300">
+                        Learn more
+                        <i class="fas fa-arrow-right ml-2 transition-all duration-300 group-hover:translate-x-1"></i>
+                    </a>
+                </div>
+                
+                <!-- Service Card 2 -->
+                <div class="service-card group bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 rounded-xl p-8 transition-all duration-300 hover:border-purple-400/30 hover:transform hover:-translate-y-2">
+                    <div class="w-14 h-14 mb-6 bg-purple-500/10 rounded-lg flex items-center justify-center group-hover:bg-purple-500/20 transition-all duration-300">
+                        <i class="fas fa-building text-2xl text-purple-400 group-hover:text-purple-300 transition-all duration-300"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3 text-white">Office Solutions</h3>
+                    <p class="text-gray-400 mb-6">Reliable, high-capacity internet with priority support for businesses of all sizes.</p>
+                    <a href="https://wa.me/+254769525570?text=I'm%20interested%20in%20Office%20Solutions" class="inline-flex items-center text-purple-400 group-hover:text-purple-300 transition-all duration-300">
+                        Learn more
+                        <i class="fas fa-arrow-right ml-2 transition-all duration-300 group-hover:translate-x-1"></i>
+                    </a>
+                </div>
+                
+                <!-- Service Card 3 -->
+                <div class="service-card group bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 rounded-xl p-8 transition-all duration-300 hover:border-blue-400/30 hover:transform hover:-translate-y-2">
+                    <div class="w-14 h-14 mb-6 bg-blue-500/10 rounded-lg flex items-center justify-center group-hover:bg-blue-500/20 transition-all duration-300">
+                        <i class="fas fa-bolt text-2xl text-blue-400 group-hover:text-blue-300 transition-all duration-300"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3 text-white">Fiber Installation</h3>
+                    <p class="text-gray-400 mb-6">Professional fiber optic installation with minimal disruption and maximum performance.</p>
+                    <a href="https://wa.me/+254769525570?text=I'm%20interested%20in%20Fiber%20Installation" class="inline-flex items-center text-blue-400 group-hover:text-blue-300 transition-all duration-300">
+                        Learn more
+                        <i class="fas fa-arrow-right ml-2 transition-all duration-300 group-hover:translate-x-1"></i>
+                    </a>
+                </div>
+                
+                <!-- Service Card 4 -->
+                <div class="service-card group bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 rounded-xl p-8 transition-all duration-300 hover:border-green-400/30 hover:transform hover:-translate-y-2">
+                    <div class="w-14 h-14 mb-6 bg-green-500/10 rounded-lg flex items-center justify-center group-hover:bg-green-500/20 transition-all duration-300">
+                        <i class="fas fa-wifi text-2xl text-green-400 group-hover:text-green-300 transition-all duration-300"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3 text-white">Wi-Fi Setup</h3>
+                    <p class="text-gray-400 mb-6">Whole-home mesh Wi-Fi systems for complete coverage without dead zones.</p>
+                    <a href="https://wa.me/+254769525570?text=I'm%20interested%20in%20Wi-Fi%20Setup" class="inline-flex items-center text-green-400 group-hover:text-green-300 transition-all duration-300">
+                        Learn more
+                        <i class="fas fa-arrow-right ml-2 transition-all duration-300 group-hover:translate-x-1"></i>
+                    </a>
+                </div>
+                
+                <!-- Service Card 5 -->
+                <div class="service-card group bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 rounded-xl p-8 transition-all duration-300 hover:border-yellow-400/30 hover:transform hover:-translate-y-2">
+                    <div class="w-14 h-14 mb-6 bg-yellow-500/10 rounded-lg flex items-center justify-center group-hover:bg-yellow-500/20 transition-all duration-300">
+                        <i class="fas fa-video text-2xl text-yellow-400 group-hover:text-yellow-300 transition-all duration-300"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3 text-white">CCTV & IoT</h3>
+                    <p class="text-gray-400 mb-6">Smart security systems and IoT solutions powered by your Swiftnet connection.</p>
+                    <a href="https://wa.me/+254769525570?text=I'm%20interested%20in%20CCTV%20&%20IoT" class="inline-flex items-center text-yellow-400 group-hover:text-yellow-300 transition-all duration-300">
+                        Learn more
+                        <i class="fas fa-arrow-right ml-2 transition-all duration-300 group-hover:translate-x-1"></i>
+                    </a>
+                </div>
+                
+                <!-- Service Card 6 -->
+                <div class="service-card group bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 rounded-xl p-8 transition-all duration-300 hover:border-indigo-400/30 hover:transform hover:-translate-y-2">
+                    <div class="w-14 h-14 mb-6 bg-indigo-500/10 rounded-lg flex items-center justify-center group-hover:bg-indigo-500/20 transition-all duration-300">
+                        <i class="fas fa-briefcase text-2xl text-indigo-400 group-hover:text-indigo-300 transition-all duration-300"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3 text-white">Business Packages</h3>
+                    <p class="text-gray-400 mb-6">Custom solutions with SLAs, static IPs, and enterprise-grade reliability.</p>
+                    <a href="https://wa.me/+254769525570?text=I'm%20interested%20in%20Business%20Packages" class="inline-flex items-center text-indigo-400 group-hover:text-indigo-300 transition-all duration-300">
+                        Learn more
+                        <i class="fas fa-arrow-right ml-2 transition-all duration-300 group-hover:translate-x-1"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- CTA at bottom -->
+            <div class="text-center mt-12">
+                <p class="text-lg text-gray-400 mb-6">Not sure which service is right for you?</p>
+                <button class="cta-btn px-8 py-3 rounded-full text-white font-semibold text-lg">
+                    Talk to an Expert <i class="fas fa-headset ml-2"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        $(document).ready(function() {
+            // Mobile menu toggle
+            $('#navbar').click(function() {
+                $(this).toggleClass('active');
+                $('#mobile-menu').slideToggle(300);
+            });
+            
+            // Navbar scroll effect
+            $(window).scroll(function() {
+                if ($(this).scrollTop() > 50) {
+                    $('nav').addClass('shadow-lg');
+                    $('nav').removeClass('glass-nav');
+                    $('nav').addClass('bg-slate-900/95');
+                } else {
+                    $('nav').removeClass('shadow-lg');
+                    $('nav').addClass('glass-nav');
+                    $('nav').removeClass('bg-slate-900/95');
+                }
+            });
+            
+            // Smooth scrolling for all links
+            $('a[href*="#"]').on('click', function(e) {
+                e.preventDefault();
+                $('html, body').animate(
+                    {
+                        scrollTop: $($(this).attr('href')).offset().top - 80,
+                    },
+                    500,
+                    'linear'
+                );
+            });
+            
+            // Typewriter effect
+            const phrases = ["Internet in Nairobi", "Fiber Solutions", "Wi-Fi Networks", "Business Internet"];
+            let currentPhrase = 0;
+            let currentChar = 0;
+            let isDeleting = false;
+            let isEnd = false;
+            
+            function typeWriter() {
+                const element = $('.typewriter');
+                const fullText = phrases[currentPhrase];
+                
+                if (isDeleting) {
+                    currentChar--;
+                    element.text(fullText.substring(0, currentChar));
+                } else {
+                    currentChar++;
+                    element.text(fullText.substring(0, currentChar));
+                }
+                
+                if (!isDeleting && currentChar === fullText.length) {
+                    isEnd = true;
+                    setTimeout(() => {
+                        isDeleting = true;
+                        typeWriter();
+                    }, 2000);
+                    return;
+                }
+                
+                if (isDeleting && currentChar === 0) {
+                    isDeleting = false;
+                    currentPhrase = (currentPhrase + 1) % phrases.length;
+                }
+                
+                const speed = isDeleting ? 50 : 100;
+                setTimeout(typeWriter, speed);
+            }
+            
+            setTimeout(typeWriter, 1000);
+            
+            // Service card animation on scroll
+            function animateCards() {
+                $('.service-card').each(function() {
+                    const cardTop = $(this).offset().top;
+                    const scrollTop = $(window).scrollTop();
+                    const windowHeight = $(window).height();
+                    
+                    if (cardTop < scrollTop + windowHeight - 100) {
+                        $(this).addClass('animate-fade-in-up');
+                    }
+                });
+            }
+            
+            // Initial check
+            animateCards();
+            
+            // Check on scroll
+            $(window).scroll(function() {
+                animateCards();
+            });
+            
+            // Add hover effect to service cards
+            $('.service-card').hover(
+                function() {
+                    // Mouse enter
+                    $(this).css('box-shadow', '0 10px 25px rgba(0, 0, 0, 0.2)');
+                },
+                function() {
+                    // Mouse leave
+                    $(this).css('box-shadow', 'none');
+                }
+            );
+        });
+    </script>
+
+    <!-- pricing section -->
+     <!-- Add this section after the services section -->
+<section id="pricing" class="relative py-20 bg-slate-900 overflow-hidden">
+    <!-- Decorative elements -->
+    <div class="absolute top-0 left-0 w-full h-full opacity-10">
+        <div class="absolute top-1/4 left-1/4 w-60 h-60 bg-blue-500 rounded-full filter blur-3xl opacity-10"></div>
+        <div class="absolute bottom-1/3 right-1/3 w-80 h-80 bg-purple-500 rounded-full filter blur-3xl opacity-10"></div>
+    </div>
+    
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
+        <!-- Section Header -->
+        <div class="text-center mb-16">
+            <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">
+                <span class="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">Simple, Transparent</span> Pricing
+            </h2>
+            <p class="text-sm sm:text-base md:text-lg text-gray-400 max-w-2xl mx-auto">
+                No hidden fees. Choose the perfect plan for your needs with our flexible options.
+            </p>
+        </div>
+        
+        <!-- Pricing Toggle -->
+        <div class="flex justify-center mb-12">
+            <div class="inline-flex items-center bg-slate-800 rounded-full p-1">
+                <button id="residential-toggle" class="px-4 sm:px-6 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all bg-blue-500 text-white">
+                    Residential
+                </button>
+                <button id="business-toggle" class="px-4 sm:px-6 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all text-gray-300 hover:text-white">
+                    Business
+                </button>
+            </div>
+        </div>
+        
+        <!-- Residential Pricing Plans (Visible by default) -->
+        <div id="residential-plans" class="grid grid-cols-2 md:grid-cols-3 gap-4 sm:gap-8">
+            <!-- Basic Plan -->
+            <div class="pricing-card group bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 rounded-xl p-4 sm:p-8 transition-all duration-300 hover:border-blue-400/50 hover:transform hover:-translate-y-2">
+                <div class="mb-6">
+                    <h3 class="text-lg sm:text-xl font-semibold mb-2 text-white">Basic</h3>
+                    <p class="text-xs sm:text-sm text-gray-400">Perfect for light browsing and emails</p>
+                </div>
+                <div class="mb-6">
+                    <span class="text-2xl sm:text-3xl md:text-4xl font-bold text-white">KES 2,999</span>
+                    <span class="text-xs sm:text-sm text-gray-400">/month</span>
+                </div>
+                <div class="mb-8">
+                    <div class="flex items-center mb-3">
+                        <i class="fas fa-check-circle text-blue-400 mr-2 text-sm sm:text-base"></i>
+                        <span class="text-xs sm:text-sm text-gray-300">10 Mbps Speed</span>
+                    </div>
+                    <div class="flex items-center mb-3">
+                        <i class="fas fa-check-circle text-blue-400 mr-2 text-sm sm:text-base"></i>
+                        <span class="text-xs sm:text-sm text-gray-300">Unlimited Data</span>
+                    </div>
+                    <div class="flex items-center mb-3">
+                        <i class="fas fa-check-circle text-blue-400 mr-2 text-sm sm:text-base"></i>
+                        <span class="text-xs sm:text-sm text-gray-300">2 Devices</span>
+                    </div>
+                    <div class="flex items-center">
+                        <i class="fas fa-check-circle text-blue-400 mr-2 text-sm sm:text-base"></i>
+                        <span class="text-xs sm:text-sm text-gray-300">Free Router</span>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <p class="text-xs sm:text-sm text-gray-400 mb-4">Installation: KES 3,000 (one-time)</p>
+                    <button class="w-full cta-btn px-4 sm:px-6 py-2 sm:py-3 rounded-full text-xs sm:text-sm text-white font-semibold transition-all group-hover:shadow-lg group-hover:shadow-blue-500/20">
+                        Get This Plan
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Standard Plan (Featured) -->
+            <div class="pricing-card group bg-gradient-to-br from-blue-900/30 to-purple-900/30 border border-blue-400/30 rounded-xl p-4 sm:p-8 transition-all duration-300 hover:border-purple-400/50 hover:transform hover:-translate-y-2 relative overflow-hidden">
+                <div class="absolute top-2 sm:top-4 right-2 sm:right-4 bg-blue-500 text-white text-xs font-bold px-2 sm:px-3 py-1 rounded-full">
+                    POPULAR
+                </div>
+                <div class="mb-6">
+                    <h3 class="text-lg sm:text-xl font-semibold mb-2 text-white">Standard</h3>
+                    <p class="text-xs sm:text-sm text-gray-400">Ideal for streaming and remote work</p>
+                </div>
+                <div class="mb-6">
+                    <span class="text-2xl sm:text-3xl md:text-4xl font-bold text-white">KES 4,999</span>
+                    <span class="text-xs sm:text-sm text-gray-400">/month</span>
+                </div>
+                <div class="mb-8">
+                    <div class="flex items-center mb-3">
+                        <i class="fas fa-check-circle text-blue-400 mr-2 text-sm sm:text-base"></i>
+                        <span class="text-xs sm:text-sm text-gray-300">25 Mbps Speed</span>
+                    </div>
+                    <div class="flex items-center mb-3">
+                        <i class="fas fa-check-circle text-blue-400 mr-2 text-sm sm:text-base"></i>
+                        <span class="text-xs sm:text-sm text-gray-300">Unlimited Data</span>
+                    </div>
+                    <div class="flex items-center mb-3">
+                        <i class="fas fa-check-circle text-blue-400 mr-2 text-sm sm:text-base"></i>
+                        <span class="text-xs sm:text-sm text-gray-300">5 Devices</span>
+                    </div>
+                    <div class="flex items-center">
+                        <i class="fas fa-check-circle text-blue-400 mr-2 text-sm sm:text-base"></i>
+                        <span class="text-xs sm:text-sm text-gray-300">Premium Router</span>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <p class="text-xs sm:text-sm text-gray-400 mb-4">Installation: KES 3,000 (one-time)</p>
+                    <button class="w-full cta-btn px-4 sm:px-6 py-2 sm:py-3 rounded-full text-xs sm:text-sm text-white font-semibold transition-all group-hover:shadow-lg group-hover:shadow-purple-500/20">
+                        Get This Plan
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Premium Plan -->
+            <div class="pricing-card group bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 rounded-xl p-4 sm:p-8 transition-all duration-300 hover:border-blue-400/50 hover:transform hover:-translate-y-2">
+                <div class="mb-6">
+                    <h3 class="text-lg sm:text-xl font-semibold mb-2 text-white">Premium</h3>
+                    <p class="text-xs sm:text-sm text-gray-400">For power users and smart homes</p>
+                </div>
+                <div class="mb-6">
+                    <span class="text-2xl sm:text-3xl md:text-4xl font-bold text-white">KES 7,999</span>
+                    <span class="text-xs sm:text-sm text-gray-400">/month</span>
+                </div>
+                <div class="mb-8">
+                    <div class="flex items-center mb-3">
+                        <i class="fas fa-check-circle text-blue-400 mr-2 text-sm sm:text-base"></i>
+                        <span class="text-xs sm:text-sm text-gray-300">50 Mbps Speed</span>
+                    </div>
+                    <div class="flex items-center mb-3">
+                        <i class="fas fa-check-circle text-blue-400 mr-2 text-sm sm:text-base"></i>
+                        <span class="text-xs sm:text-sm text-gray-300">Unlimited Data</span>
+                    </div>
+                    <div class="flex items-center mb-3">
+                        <i class="fas fa-check-circle text-blue-400 mr-2 text-sm sm:text-base"></i>
+                        <span class="text-xs sm:text-sm text-gray-300">10+ Devices</span>
+                    </div>
+                    <div class="flex items-center">
+                       burgo1150
+                        <i class="fas fa-check-circle text-blue-400 mr-2 text-sm sm:text-base"></i>
+                        <span class="text-xs sm:text-sm text-gray-300">Mesh Wi-Fi System</span>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <p class="text-xs sm:text-sm text-gray-400 mb-4">Installation: KES 5,000 (one-time)</p>
+                    <button class="w-full cta-btn px-4 sm:px-6 py-2 sm:py-3 rounded-full text-xs sm:text-sm text-white font-semibold transition-all group-hover:shadow-lg group-hover:shadow-blue-500/20">
+                        Get This Plan
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Business Pricing Plans (Hidden by default) -->
+        <div id="business-plans" class="grid grid-cols-2 md:grid-cols-3 gap-4 sm:gap-8 hidden">
+            <!-- Business Starter -->
+            <div class="pricing-card group bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 rounded-xl p-4 sm:p-8 transition-all duration-300 hover:border-blue-400/50 hover:transform hover:-translate-y-2">
+                <div class="mb-6">
+                    <h3 class="text-lg sm:text-xl font-semibold mb-2 text-white">Business Starter</h3>
+                    <p class="text-xs sm:text-sm text-gray-400">For small offices and startups</p>
+                </div>
+                <div class="mb-6">
+                    <span class="text-2xl sm:text-3xl md:text-4xl font-bold text-white">KES 12,999</span>
+                    <span class="text-xs sm:text-sm text-gray-400">/month</span>
+                </div>
+                <div class="mb-8">
+                    <div class="flex items-center mb-3">
+                        <i class="fas fa-check-circle text-blue-400 mr-2 text-sm sm:text-base"></i>
+                        <span class="text-xs sm:text-sm text-gray-300">50 Mbps Speed</span>
+                    </div>
+                    <div class="flex items-center mb-3">
+                        <i class="fas fa-check-circle text-blue-400 mr-2 text-sm sm:text-base"></i>
+                        <span class="text-xs sm:text-sm text-gray-300">Static IP Included</span>
+                    </div>
+                    <div class="flex items-center mb-3">
+                        <i class="fas fa-check-circle text-blue-400 mr-2 text-sm sm:text-base"></i>
+                        <span class="text-xs sm:text-sm text-gray-300">Priority Support</span>
+                    </div>
+                    <div class="flex items-center">
+                        <i class="fas fa-check-circle text-blue-400 mr-2 text-sm sm:text-base"></i>
+                        <span class="text-xs sm:text-sm text-gray-300">5 Email Accounts</span>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <p class="text-xs sm:text-sm text-gray-400 mb-4">Installation: KES 15,000 (one-time)</p>
+                    <button class="w-full cta-btn px-4 sm:px-6 py-2 sm:py-3 rounded-full text-xs sm:text-sm text-white font-semibold transition-all group-hover:shadow-lg group-hover:shadow-blue-500/20">
+                        Get This Plan
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Business Pro (Featured) -->
+            <div class="pricing-card group bg-gradient-to-br from-blue-900/30 to-purple-900/30 border border-blue-400/30 rounded-xl p-4 sm:p-8 transition-all duration-300 hover:border-purple-400/50 hover:transform hover:-translate-y-2 relative overflow-hidden">
+                <div class="absolute top-2 sm:top-4 right-2 sm:right-4 bg-blue-500 text-white text-xs font-bold px-2 sm:px-3 py-1 rounded-full">
+                    RECOMMENDED
+                </div>
+                <div class="mb-6">
+                    <h3 class="text-lg sm:text-xl font-semibold mb-2 text-white">Business Pro</h3>
+                    <p class="text-xs sm:text-sm text-gray-400">For growing businesses</p>
+                </div>
+                <div class="mb-6">
+                    <span class="text-2xl sm:text-3xl md:text-4xl font-bold text-white">KES 24,999</span>
+                    <span class="text-xs sm:text-sm text-gray-400">/month</span>
+                </div>
+                <div class="mb-8">
+                    <div class="flex items-center mb-3">
+                        <i class="fas fa-check-circle text-blue-400 mr-2 text-sm sm:text-base"></i>
+                        <span class="text-xs sm:text-sm text-gray-300">100 Mbps Speed</span>
+                    </div>
+                    <div class="flex items-center mb-3">
+                        <i class="fas fa-check-circle text-blue-400 mr-2 text-sm sm:text-base"></i>
+                        <span class="text-xs sm:text-sm text-gray-300">2 Static IPs</span>
+                    </div>
+                    <div class="flex items-center mb-3">
+                        <i class="fas fa-check-circle text-blue-400 mr-2 text-sm sm:text-base"></i>
+                        <span class="text-xs sm:text-sm text-gray-300">24/7 Priority Support</span>
+                    </div>
+                    <div class="flex items-center">
+                        <i class="fas fa-check-circle text-blue-400 mr-2 text-sm sm:text-base"></i>
+                        <span class="text-xs sm:text-sm text-gray-300">10 Email Accounts</span>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <p class="text-xs sm:text-sm text-gray-400 mb-4">Installation: KES 15,000 (one-time)</p>
+                    <button class="w-full cta-btn px-4 sm:px-6 py-2 sm:py-3 rounded-full text-xs sm:text-sm text-white font-semibold transition-all group-hover:shadow-lg group-hover:shadow-purple-500/20">
+                        Get This Plan
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Enterprise -->
+            <div class="pricing-card group bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 rounded-xl p-4 sm:p-8 transition-all duration-300 hover:border-blue-400/50 hover:transform hover:-translate-y-2">
+                <div class="mb-6">
+                    <h3 class="text-lg sm:text-xl font-semibold mb-2 text-white">Enterprise</h3>
+                    <p class="text-xs sm:text-sm text-gray-400">Custom solutions for large organizations</p>
+                </div>
+                <div class="mb-6">
+                    <span class="text-2xl sm:text-3xl md:text-4xl font-bold text-white">KES 49,999+</span>
+                    <span class="text-xs sm:text-sm text-gray-400">/month</span>
+                </div>
+                <div class="mb-8">
+                    <div class="flex items-center mb-3">
+                        <i class="fas fa-check-circle text-blue-400 mr-2 text-sm sm:text-base"></i>
+                        <span class="text-xs sm:text-sm text-gray-300">200+ Mbps Speed</span>
+                    </div>
+                    <div class="flex items-center mb-3">
+                        <i class="fas fa-check-circle text-blue-400 mr-2 text-sm sm:text-base"></i>
+                        <span class="text-xs sm:text-sm text-gray-300">Multiple Static IPs</span>
+                    </div>
+                    <div class="flex items-center mb-3">
+                        <i class="fas fa-check-circle text-blue-400 mr-2 text-sm sm:text-base"></i>
+                        <span class="text-xs sm:text-sm text-gray-300">Dedicated Account Manager</span>
+                    </div>
+                    <div class="flex items-center">
+                        <i class="fas fa-check-circle text-blue-400 mr-2 text-sm sm:text-base"></i>
+                        <span class="text-xs sm:text-sm text-gray-300">Custom SLA Available</span>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <p class="text-xs sm:text-sm text-gray-400 mb-4">Custom installation</p>
+                    <button class="w-full cta-btn px-4 sm:px-6 py-2 sm:py-3 rounded-full text-xs sm:text-sm text-white font-semibold transition-all group-hover:shadow-lg group-hover:shadow-blue-500/20">
+                        Contact Sales
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Custom Plan CTA -->
+        <div class="text-center mt-16">
+            <p class="text-sm sm:text-lg text-gray-400 mb-6">Need a custom solution for your specific requirements?</p>
+            <button class="secondary-btn px-6 sm:px-8 py-2 sm:py-3 rounded-full text-sm sm:text-lg text-white font-semibold">
+                Request Custom Plan <i class="fas fa-pen-alt ml-2"></i>
+            </button>
+        </div>
+    </div>
+</section>
+
+<script>
+    $(document).ready(function() {
+        // Pricing toggle functionality
+        $('#residential-toggle').click(function() {
+            $(this).addClass('bg-blue-500 text-white');
+            $(this).removeClass('text-gray-300 hover:text-white');
+            $('#business-toggle').removeClass('bg-blue-500 text-white');
+            $('#business-toggle').addClass('text-gray-300 hover:text-white');
+            $('#residential-plans').removeClass('hidden');
+            $('#business-plans').addClass('hidden');
+        });
+        
+        $('#business-toggle').click(function() {
+            $(this).addClass('bg-blue-500 text-white');
+            $(this).removeClass('text-gray-300 hover:text-white');
+            $('#residential-toggle').removeClass('bg-blue-500 text-white');
+            $('#residential-toggle').addClass('text-gray-300 hover:text-white');
+            $('#business-plans').removeClass('hidden');
+            $('#residential-plans').addClass('hidden');
+        });
+        
+        // Pricing card animation on scroll
+        function animatePricingCards() {
+            $('.pricing-card').each(function() {
+                const cardTop = $(this).offset().top;
+                const scrollTop = $(window).scrollTop();
+                const windowHeight = $(window).height();
+                
+                if (cardTop < scrollTop + windowHeight - 100) {
+                    $(this).addClass('animate-fade-in-up');
+                }
+            });
+        }
+        
+        // Initial check
+        animatePricingCards();
+        
+        // Check on scroll
+        $(window).scroll(function() {
+            animatePricingCards();
+        });
+        
+        // Add glow effect to pricing cards on hover
+        $('.pricing-card').hover(
+            function() {
+                // Mouse enter
+                $(this).css('box-shadow', '0 10px 25px rgba(59, 130, 246, 0.2)');
+            },
+            function() {
+                // Mouse leave
+                $(this).css('box-shadow', 'none');
+            }
+        );
+    });
+</script>
+
+<style>
+    /* Add these styles to your existing style section */
+    .pricing-card {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.6s ease, transform 0.6s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    }
+    
+    .pricing-card.animate-fade-in-up {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    
+    .pricing-card:nth-child(1) { transition-delay: 0.1s; }
+    .pricing-card:nth-child(2) { transition-delay: 0.2s; }
+    .pricing-card:nth-child(3) { transition-delay: 0.3s; }
+</style>
+
+
+<!-- Add this section after the pricing section -->
+<section id="swiftnet-choose-us" class="relative py-20 bg-gray-900 overflow-hidden">
+    <!-- Decorative elements -->
+    <div class="absolute top-0 left-0 w-full h-full opacity-10">
+        <div class="absolute top-20 right-10 w-60 h-60 bg-purple-500 rounded-full filter blur-3xl opacity-10"></div>
+        <div class="absolute bottom-20 left-10 w-80 h-80 bg-blue-500 rounded-full filter blur-3xl opacity-10"></div>
+    </div>
+    
+    <div class="relative max-w-7xl mx-auto px-2 sm:px-4 lg:px-6 z-10">
+        <!-- Section Header -->
+        <div class="text-center mb-12">
+            <h2 class="text-2xl md:text-3xl font-bold mb-4">
+                <span class="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">Why Choose</span> Swiftnet
+            </h2>
+            <p class="text-base text-gray-300 max-w-2xl mx-auto">
+                We're committed to providing the best internet experience in Nairobi with unmatched reliability and service.
+            </p>
+        </div>
+        
+        <!-- Benefits Slideshow -->
+        <div class="swiftnet-benefits-slider relative">
+            <!-- Slider Controls -->
+            <div class="flex justify-center mb-6">
+                <button class="swiftnet-slider-prev mx-2 w-8 h-8 rounded-full bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 text-gray-200 hover:bg-blue-500 transition-all">
+                    <i class="fas fa-chevron-left text-sm"></i>
+                </button>
+                <button class="swiftnet-slider-next mx-2 w-8 h-8 rounded-full bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 text-gray-200 hover:bg-blue-500 transition-all">
+                    <i class="fas fa-chevron-right text-sm"></i>
+                </button>
+            </div>
+            
+            <!-- Slider Track -->
+            <div class="swiftnet-benefits-track overflow-hidden">
+                <div class="swiftnet-benefits-slides flex transition-transform duration-500">
+                    <!-- Slide 1 -->
+                    <div class="swiftnet-benefits-slide flex-shrink-0">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 mx-auto max-w-full px-2 sm:px-4">
+                            <div class="swiftnet-benefit-card bg-gray-800/30 backdrop-blur-sm rounded-lg p-3 transition-all duration-300 hover:bg-gray-800/50 shadow-md">
+                                <div class="flex items-start mb-2">
+                                    <div class="w-8 h-8 bg-blue-500/10 rounded-md flex items-center justify-center mr-2 flex-shrink-0">
+                                        <i class="fas fa-tachometer-alt text-base text-blue-400"></i>
+                                    </div>
+                                    <h3 class="text-base font-semibold text-gray-200 mt-1">Fast Speeds</h3>
+                                </div>
+                                <p class="text-gray-400 text-xs">Up to 1Gbps for streaming, gaming, and business.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Slide 2 -->
+                    <div class="swiftnet-benefits-slide flex-shrink-0">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 mx-auto max-w-full px-2 sm:px-4">
+                            <div class="swiftnet-benefit-card bg-gray-800/30 backdrop-blur-sm rounded-lg p-3 transition-all duration-300 hover:bg-gray-800/50 shadow-md">
+                                <div class="flex items-start mb-2">
+                                    <div class="w-8 h-8 bg-purple-500/10 rounded-md flex items-center justify-center mr-2 flex-shrink-0">
+                                        <i class="fas fa-headset text-base text-purple-400"></i>
+                                    </div>
+                                    <h3 class="text-base font-semibold text-gray-200 mt-1">24/7 Support</h3>
+                                </div>
+                                <p class="text-gray-400 text-xs">Local team available for any issues.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Slide 3 -->
+                    <div class="swiftnet-benefits-slide flex-shrink-0">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 mx-auto max-w-full px-2 sm:px-4">
+                            <div class="swiftnet-benefit-card bg-gray-800/30 backdrop-blur-sm rounded-lg p-3 transition-all duration-300 hover:bg-gray-800/50 shadow-md">
+                                <div class="flex items-start mb-2">
+                                    <div class="w-8 h-8 bg-green-500/10 rounded-md flex items-center justify-center mr-2 flex-shrink-0">
+                                        <i class="fas fa-sliders-h text-base text-green-400"></i>
+                                    </div>
+                                    <h3 class="text-base font-semibold text-gray-200 mt-1">Flexible Plans</h3>
+                                </div>
+                                <p class="text-gray-400 text-xs">Customizable packages for your needs.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Slide 4 -->
+                    <div class="swiftnet-benefits-slide flex-shrink-0">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 mx-auto max-w-full px-2 sm:px-4">
+                            <div class="swiftnet-benefit-card bg-gray-800/30 backdrop-blur-sm rounded-lg p-3 transition-all duration-300 hover:bg-gray-800/50 shadow-md">
+                                <div class="flex items-start mb-2">
+                                    <div class="w-8 h-8 bg-yellow-500/10 rounded-md flex items-center justify-center mr-2 flex-shrink-0">
+                                        <i class="fas fa-home text-base text-yellow-400"></i>
+                                    </div>
+                                    <h3 class="text-base font-semibold text-gray-200 mt-1">Free Install*</h3>
+                                </div>
+                                <p class="text-gray-400 text-xs">Free setup in select areas with annual plans.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Slide 5 -->
+                    <div class="swiftnet-benefits-slide flex-shrink-0">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 mx-auto max-w-full px-2 sm:px-4">
+                            <div class="swiftnet-benefit-card bg-gray-800/30 backdrop-blur-sm rounded-lg p-3 transition-all duration-300 hover:bg-gray-800/50 shadow-md">
+                                <div class="flex items-start mb-2">
+                                    <div class="w-8 h-8 bg-red-500/10 rounded-md flex items-center justify-center mr-2 flex-shrink-0">
+                                        <i class="fas fa-shield-alt text-base text-red-400"></i>
+                                    </div>
+                                    <h3 class="text-base font-semibold text-gray-200 mt-1">99.9% Uptime</h3>
+                                </div>
+                                <p class="text-gray-400 text-xs">Reliable network for constant connectivity.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Slide 6 -->
+                    <div class="swiftnet-benefits-slide flex-shrink-0">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 mx-auto max-w-full px-2 sm:px-4">
+                            <div class="swiftnet-benefit-card bg-gray-800/30 backdrop-blur-sm rounded-lg p-3 transition-all duration-300 hover:bg-gray-800/50 shadow-md">
+                                <div class="flex items-start mb-2">
+                                    <div class="w-8 h-8 bg-indigo-500/10 rounded-md flex items-center justify-center mr-2 flex-shrink-0">
+                                        <i class="fas fa-wifi text-base text-indigo-400"></i>
+                                    </div>
+                                    <h3 class="text-base font-semibold text-gray-200 mt-1">Advanced Wi-Fi</h3>
+                                </div>
+                                <p class="text-gray-400 text-xs">Premium routers for consistent coverage.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Slider Indicators -->
+            <div class="flex justify-center mt-6">
+                <button class="swiftnet-slider-indicator w-2 h-2 mx-1 rounded-full bg-gray-600 hover:bg-blue-400 transition-all" data-slide="0"></button>
+                <button class="swiftnet-slider-indicator w-2 h-2 mx-1 rounded-full bg-gray-600 hover:bg-blue-400 transition-all" data-slide="1"></button>
+                <button class="swiftnet-slider-indicator w-2 h-2 mx-1 rounded-full bg-gray-600 hover:bg-blue-400 transition-all" data-slide="2"></button>
+                <button class="swiftnet-slider-indicator w-2 h-2 mx-1 rounded-full bg-gray-600 hover:bg-blue-400 transition-all" data-slide="3"></button>
+                <button class="swiftnet-slider-indicator w-2 h-2 mx-1 rounded-full bg-gray-600 hover:bg-blue-400 transition-all" data-slide="4"></button>
+                <button class="swiftnet-slider-indicator w-2 h-2 mx-1 rounded-full bg-gray-600 hover:bg-blue-400 transition-all" data-slide="5"></button>
+            </div>
+        </div>
+        
+        <!-- Trust Indicators -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-12">
+            <div class="text-center p-3">
+                <div class="text-2xl font-bold text-blue-400 mb-2">5K+</div>
+                <div class="text-xs text-gray-400">Happy Customers</div>
+            </div>
+            <div class="text-center p-3">
+                <div class="text-2xl font-bold text-purple-400 mb-2">24/7</div>
+                <div class="text-xs text-gray-400">Support Available</div>
+            </div>
+            <div class="text-center p-3">
+                <div class="text-2xl font-bold text-green-400 mb-2">99.9%</div>
+                <div class="text-xs text-gray-400">Uptime</div>
+            </div>
+            <div class="text-center p-3">
+                <div class="text-2xl font-bold text-yellow-400 mb-2">30MINS</div>
+                <div class="text-xs text-gray-400">Avg. Response Time</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    // Ensure jQuery is loaded before running the script
+    if (typeof jQuery === 'undefined') {
+        console.error('jQuery is not loaded. Please include jQuery before this script.');
+    } else {
+        $(document).ready(function() {
+            // Benefits slider functionality
+            let currentSlide = 0;
+            const slides = $('.swiftnet-benefits-slide');
+            const totalSlides = slides.length; // Now 6 slides
+            
+            function updateSlider() {
+                // Adjust transform based on screen size
+                const isSmallScreen = window.innerWidth < 640;
+                const slidesPerView = isSmallScreen ? 2 : 4; // 2 cards on small, 4 on large
+                const translatePercentage = (currentSlide * 100) / slidesPerView;
+                $('.swiftnet-benefits-slides').css('transform', `translateX(-${translatePercentage}%)`);
+                $('.swiftnet-slider-indicator').removeClass('bg-blue-400 w-4').addClass('bg-gray-600 w-2');
+                $(`.swiftnet-slider-indicator[data-slide="${currentSlide}"]`).removeClass('bg-gray-600 w-2').addClass('bg-blue-400 w-4');
+            }
+            
+            // Next slide
+            $('.swiftnet-slider-next').click(function() {
+                const isSmallScreen = window.innerWidth < 640;
+                const slidesPerView = isSmallScreen ? 2 : 4;
+                currentSlide = (currentSlide + 1) % (totalSlides - slidesPerView + 1);
+                updateSlider();
+            });
+            
+            // Previous slide
+            $('.swiftnet-slider-prev').click(function() {
+                currentSlide = (currentSlide - 1 + (totalSlides - (window.innerWidth < 640 ? 2 : 4) + 1)) % (totalSlides - (window.innerWidth < 640 ? 2 : 4) + 1);
+                updateSlider();
+            });
+            
+            // Go to specific slide
+            $('.swiftnet-slider-indicator').click(function() {
+                currentSlide = parseInt($(this).data('slide'));
+                updateSlider();
+            });
+            
+            // Auto-advance slides (5-second interval)
+            let slideInterval = setInterval(() => {
+                const isSmallScreen = window.innerWidth < 640;
+                const slidesPerView = isSmallScreen ? 2 : 4;
+                currentSlide = (currentSlide + 1) % (totalSlides - slidesPerView + 1);
+                updateSlider();
+            }, 5000);
+            
+            // Pause on hover
+            $('.swiftnet-benefits-slider').hover(
+                function() { clearInterval(slideInterval); },
+                function() { 
+                    slideInterval = setInterval(() => {
+                        const isSmallScreen = window.innerWidth < 640;
+                        const slidesPerView = isSmallScreen ? 2 : 4;
+                        currentSlide = (currentSlide + 1) % (totalSlides - slidesPerView + 1);
+                        updateSlider();
+                    }, 5000);
+                }
+            );
+            
+            // Animate benefit cards on scroll
+            function animateBenefitCards() {
+                $('.swiftnet-benefit-card').each(function() {
+                    const cardTop = $(this).offset().top;
+                    const scrollTop = $(window).scrollTop();
+                    const windowHeight = $(window).height();
+                    
+                    if (cardTop < scrollTop + windowHeight - 100) {
+                        $(this).addClass('swiftnet-animate-fade-in-up');
+                    }
+                });
+            }
+            
+            // Initial check
+            animateBenefitCards();
+            updateSlider();
+            
+            // Check on scroll
+            $(window).scroll(function() {
+                animateBenefitCards();
+            });
+            
+            // Update slider on window resize
+            $(window).resize(function() {
+                updateSlider();
+            });
+        });
+    }
+</script>
+
+<style>
+    /* Dark theme styles */
+    .swiftnet-benefit-card {
+        box-sizing: border-box;
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.6s ease, transform 0.6s ease, background-color 0.3s ease;
+        width: 100%;
+        max-width: 100%;
+        overflow: hidden;
+    }
+    
+    .swiftnet-benefit-card.swiftnet-animate-fade-in-up {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    
+    .swiftnet-benefit-card:hover {
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    }
+    
+    .swiftnet-benefits-track {
+        width: 100%;
+        overflow: hidden;
+    }
+    
+    .swiftnet-benefits-slides {
+        display: flex;
+        transition: transform 0.5s ease;
+    }
+    
+    .swiftnet-benefits-slide {
+        flex-shrink: 0;
+        transition: all 0.5s ease;
+    }
+    
+    .swiftnet-slider-indicator {
+        transition: all 0.3s ease;
+    }
+    
+    /* Grid layout for cards */
+    .swiftnet-benefits-slide .grid {
+        display: grid;
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+        gap: 0.5rem;
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+    
+    .swiftnet-benefit-card h3 {
+        font-size: 1rem;
+        word-break: break-word;
+        overflow-wrap: break-word;
+        white-space: normal;
+    }
+    
+    .swiftnet-benefit-card p {
+        font-size: 0.7rem;
+        word-break: break-word;
+        overflow-wrap: break-word;
+        white-space: normal;
+    }
+    
+    /* Responsive adjustments */
+    @media (min-width: 640px) {
+        .swiftnet-benefits-slide {
+            width: 25%; /* Show four slides at a time (4 cards) */
+        }
+        .swiftnet-benefits-slides {
+            width: 150%; /* 6 slides * 25% */
+        }
+        .swiftnet-benefits-slide .grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr)); /* Two cards per row */
+            padding: 0 0.5rem;
+        }
+    }
+    
+    @media (max-width: 639px) {
+        .swiftnet-benefits-slide {
+            width: 50%; /* Show two slides at a time (2 cards) */
+            max-width: 100%;
+        }
+        .swiftnet-benefits-slides {
+            width: 300%; /* 6 slides * 50% */
+        }
+        .swiftnet-benefits-slide .grid {
+            grid-template-columns: repeat(1, minmax(0, 1fr)); /* One card per slide, but two slides shown */
+            padding: 0 1rem; /* Equal spacing on left and right */
+            gap: 0.5rem;
+        }
+        .swiftnet-benefit-card {
+            padding: 0.5rem;
+        }
+        .swiftnet-benefit-card h3 {
+            font-size: 0.9rem;
+        }
+        .swiftnet-benefit-card p {
+            font-size: 0.65rem;
+        }
+        .swiftnet-benefit-card .w-8 {
+            width: 1.5rem;
+            height: 1.5rem;
+        }
+        .swiftnet-benefit-card .text-base {
+            font-size: 0.9rem;
+        }
+    }
+    
+    @media (max-width: 400px) {
+        .swiftnet-benefits-slide .grid {
+            padding: 0 0.5rem;
+        }
+        .swiftnet-benefit-card {
+            padding: 0.4rem;
+        }
+        .swiftnet-benefit-card h3 {
+            font-size: 0.85rem;
+        }
+        .swiftnet-benefit-card p {
+            font-size: 0.6rem;
+        }
+        .swiftnet-benefit-card .w-8 {
+            width: 1.25rem;
+            height: 1.25rem;
+        }
+        .swiftnet-benefit-card .text-base {
+            font-size: 0.8rem;
+        }
+    }
+    
+    /* Animation delays for cards */
+    .swiftnet-benefit-card:nth-child(1) { transition-delay: 0.1s; }
+    .swiftnet-benefit-card:nth-child(2) { transition-delay: 0.2s; }
+    .swiftnet-benefit-card:nth-child(3) { transition-delay: 0.3s; }
+    .swiftnet-benefit-card:nth-child(4) { transition-delay: 0.4s; }
+    .swiftnet-benefit-card:nth-child(5) { transition-delay: 0.5s; }
+    .swiftnet-benefit-card:nth-child(6) { transition-delay: 0.6s; }
+</style>
+
+
+<!-- Add this section after the pricing section -->
+<section id="swiftnet-choose-us" class="relative py-20 bg-gray-900 overflow-hidden">
+    <!-- Decorative elements -->
+    <div class="absolute top-0 left-0 w-full h-full opacity-10">
+        <div class="absolute top-20 right-10 w-60 h-60 bg-purple-500 rounded-full filter blur-3xl opacity-10"></div>
+        <div class="absolute bottom-20 left-10 w-80 h-80 bg-blue-500 rounded-full filter blur-3xl opacity-10"></div>
+    </div>
+    
+    <div class="relative max-w-7xl mx-auto px-2 sm:px-4 lg:px-6 z-10">
+        <!-- Section Header -->
+        <div class="text-center mb-12">
+            <h2 class="text-2xl md:text-3xl font-bold mb-4">
+                <span class="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">Why Choose</span> Swiftnet
+            </h2>
+            <p class="text-base text-gray-300 max-w-2xl mx-auto">
+                We're committed to providing the best internet experience in Nairobi with unmatched reliability and service.
+            </p>
+        </div>
+        
+        <!-- Benefits Slideshow -->
+        <div class="swiftnet-benefits-slider relative">
+            <!-- Slider Controls -->
+            <div class="flex justify-center mb-6">
+                <button class="swiftnet-slider-prev mx-2 w-8 h-8 rounded-full bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 text-gray-200 hover:bg-blue-500 transition-all">
+                    <i class="fas fa-chevron-left text-sm"></i>
+                </button>
+                <button class="swiftnet-slider-next mx-2 w-8 h-8 rounded-full bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 text-gray-200 hover:bg-blue-500 transition-all">
+                    <i class="fas fa-chevron-right text-sm"></i>
+                </button>
+            </div>
+            
+            <!-- Slider Track -->
+            <div class="swiftnet-benefits-track overflow-hidden">
+                <div class="swiftnet-benefits-slides flex transition-transform duration-500">
+                    <!-- Slide 1 -->
+                    <div class="swiftnet-benefits-slide flex-shrink-0">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 mx-auto max-w-full px-2 sm:px-4">
+                            <div class="swiftnet-benefit-card bg-gray-800/30 backdrop-blur-sm rounded-lg p-3 transition-all duration-300 hover:bg-gray-800/50 shadow-md">
+                                <div class="flex items-start mb-2">
+                                    <div class="w-8 h-8 bg-blue-500/10 rounded-md flex items-center justify-center mr-2 flex-shrink-0">
+                                        <i class="fas fa-tachometer-alt text-base text-blue-400"></i>
+                                    </div>
+                                    <h3 class="text-base font-semibold text-gray-200 mt-1">Fast Speeds</h3>
+                                </div>
+                                <p class="text-gray-400 text-xs">Up to 1Gbps for streaming, gaming, and business.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Slide 2 -->
+                    <div class="swiftnet-benefits-slide flex-shrink-0">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 mx-auto max-w-full px-2 sm:px-4">
+                            <div class="swiftnet-benefit-card bg-gray-800/30 backdrop-blur-sm rounded-lg p-3 transition-all duration-300 hover:bg-gray-800/50 shadow-md">
+                                <div class="flex items-start mb-2">
+                                    <div class="w-8 h-8 bg-purple-500/10 rounded-md flex items-center justify-center mr-2 flex-shrink-0">
+                                        <i class="fas fa-headset text-base text-purple-400"></i>
+                                    </div>
+                                    <h3 class="text-base font-semibold text-gray-200 mt-1">24/7 Support</h3>
+                                </div>
+                                <p class="text-gray-400 text-xs">Local team available for any issues.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Slide 3 -->
+                    <div class="swiftnet-benefits-slide flex-shrink-0">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 mx-auto max-w-full px-2 sm:px-4">
+                            <div class="swiftnet-benefit-card bg-gray-800/30 backdrop-blur-sm rounded-lg p-3 transition-all duration-300 hover:bg-gray-800/50 shadow-md">
+                                <div class="flex items-start mb-2">
+                                    <div class="w-8 h-8 bg-green-500/10 rounded-md flex items-center justify-center mr-2 flex-shrink-0">
+                                        <i class="fas fa-sliders-h text-base text-green-400"></i>
+                                    </div>
+                                    <h3 class="text-base font-semibold text-gray-200 mt-1">Flexible Plans</h3>
+                                </div>
+                                <p class="text-gray-400 text-xs">Customizable packages for your needs.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Slide 4 -->
+                    <div class="swiftnet-benefits-slide flex-shrink-0">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 mx-auto max-w-full px-2 sm:px-4">
+                            <div class="swiftnet-benefit-card bg-gray-800/30 backdrop-blur-sm rounded-lg p-3 transition-all duration-300 hover:bg-gray-800/50 shadow-md">
+                                <div class="flex items-start mb-2">
+                                    <div class="w-8 h-8 bg-yellow-500/10 rounded-md flex items-center justify-center mr-2 flex-shrink-0">
+                                        <i class="fas fa-home text-base text-yellow-400"></i>
+                                    </div>
+                                    <h3 class="text-base font-semibold text-gray-200 mt-1">Free Install*</h3>
+                                </div>
+                                <p class="text-gray-400 text-xs">Free setup in select areas with annual plans.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Slide 5 -->
+                    <div class="swiftnet-benefits-slide flex-shrink-0">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 mx-auto max-w-full px-2 sm:px-4">
+                            <div class="swiftnet-benefit-card bg-gray-800/30 backdrop-blur-sm rounded-lg p-3 transition-all duration-300 hover:bg-gray-800/50 shadow-md">
+                                <div class="flex items-start mb-2">
+                                    <div class="w-8 h-8 bg-red-500/10 rounded-md flex items-center justify-center mr-2 flex-shrink-0">
+                                        <i class="fas fa-shield-alt text-base text-red-400"></i>
+                                    </div>
+                                    <h3 class="text-base font-semibold text-gray-200 mt-1">99.9% Uptime</h3>
+                                </div>
+                                <p class="text-gray-400 text-xs">Reliable network for constant connectivity.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Slide 6 -->
+                    <div class="swiftnet-benefits-slide flex-shrink-0">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 mx-auto max-w-full px-2 sm:px-4">
+                            <div class="swiftnet-benefit-card bg-gray-800/30 backdrop-blur-sm rounded-lg p-3 transition-all duration-300 hover:bg-gray-800/50 shadow-md">
+                                <div class="flex items-start mb-2">
+                                    <div class="w-8 h-8 bg-indigo-500/10 rounded-md flex items-center justify-center mr-2 flex-shrink-0">
+                                        <i class="fas fa-wifi text-base text-indigo-400"></i>
+                                    </div>
+                                    <h3 class="text-base font-semibold text-gray-200 mt-1">Advanced Wi-Fi</h3>
+                                </div>
+                                <p class="text-gray-400 text-xs">Premium routers for consistent coverage.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Slider Indicators -->
+            <div class="flex justify-center mt-6">
+                <button class="swiftnet-slider-indicator w-2 h-2 mx-1 rounded-full bg-gray-600 hover:bg-blue-400 transition-all" data-slide="0"></button>
+                <button class="swiftnet-slider-indicator w-2 h-2 mx-1 rounded-full bg-gray-600 hover:bg-blue-400 transition-all" data-slide="1"></button>
+                <button class="swiftnet-slider-indicator w-2 h-2 mx-1 rounded-full bg-gray-600 hover:bg-blue-400 transition-all" data-slide="2"></button>
+                <button class="swiftnet-slider-indicator w-2 h-2 mx-1 rounded-full bg-gray-600 hover:bg-blue-400 transition-all" data-slide="3"></button>
+                <button class="swiftnet-slider-indicator w-2 h-2 mx-1 rounded-full bg-gray-600 hover:bg-blue-400 transition-all" data-slide="4"></button>
+                <button class="swiftnet-slider-indicator w-2 h-2 mx-1 rounded-full bg-gray-600 hover:bg-blue-400 transition-all" data-slide="5"></button>
+            </div>
+        </div>
+        
+        <!-- Trust Indicators -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-12">
+            <div class="text-center p-3">
+                <div class="text-2xl font-bold text-blue-400 mb-2">5K+</div>
+                <div class="text-xs text-gray-400">Happy Customers</div>
+            </div>
+            <div class="text-center p-3">
+                <div class="text-2xl font-bold text-purple-400 mb-2">24/7</div>
+                <div class="text-xs text-gray-400">Support Available</div>
+            </div>
+            <div class="text-center p-3">
+                <div class="text-2xl font-bold text-green-400 mb-2">99.9%</div>
+                <div class="text-xs text-gray-400">Uptime</div>
+            </div>
+            <div class="text-center p-3">
+                <div class="text-2xl font-bold text-yellow-400 mb-2">1Hr</div>
+                <div class="text-xs text-gray-400">Avg. Response Time</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Add this section after the "Why Choose Us" section -->
+<section id="connect-cta" class="relative py-20 bg-slate-900 overflow-hidden">
+    <!-- Parallax Background -->
+    <div class="swiftnet-cta-parallax absolute inset-0 bg-[url('https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80')] bg-cover bg-center bg-fixed opacity-20"></div>
+    
+    <!-- Glass Panel -->
+    <div class="swiftnet-cta-glass relative max-w-4xl mx-auto bg-slate-800/50 backdrop-blur-sm rounded-xl p-8 md:p-12 border border-slate-700/50 shadow-2xl">
+        <div class="text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4 text-white">
+                Let's Connect You <span class="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">Today!</span>
+            </h2>
+            <p class="text-lg text-gray-300 mb-8 max-w-2xl mx-auto">
+                Get started with Kenya's fastest internet service in just a few clicks.
+            </p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <!-- Callback Button -->
+                <a href="tel:+254769525570" 
+   class="swiftnet-cta-btn bg-blue-500/10 hover:bg-blue-500/20 border border-blue-400/30 text-white px-6 py-4 rounded-lg transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/20">
+    <i class="fas fa-phone-alt text-blue-400 mb-2 text-xl"></i>
+    <div class="font-semibold">Request Callback</div>
+</a>
+
+                
+                <!-- Installation Button -->
+                <a href="https://wa.me/254769525570" target="_blank" class="swiftnet-cta-btn bg-purple-500/10 hover:bg-purple-500/20 border border-purple-400/30 text-white px-6 py-4 rounded-lg transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/20">
+                    <i class="fas fa-calendar-check text-purple-400 mb-2 text-xl"></i>
+                    <div class="font-semibold">Book Installation</div>
+                </a>
+                
+                <!-- Live Chat Button -->
+                <a href="https://wa.me/254769525570" target="_blank" class="swiftnet-cta-btn bg-green-500/10 hover:bg-green-500/20 border border-green-400/30 text-white px-6 py-4 rounded-lg transition-all duration-300 hover:shadow-lg hover:shadow-green-500/20">
+                    <i class="fas fa-comment-dots text-green-400 mb-2 text-xl"></i>
+                    <div class="font-semibold">Live Chat Now</div>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Callback Modal -->
+<div id="swiftnet-callback-modal" class="swiftnet-modal hidden fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
+    <div class="swiftnet-modal-glass bg-slate-800/90 backdrop-blur-sm rounded-xl max-w-md w-full p-6 border border-slate-700/50 animate-modal-in">
+        <div class="flex justify-between items-center mb-4">
+            <h3 class="text-xl font-bold text-white">Request a Callback</h3>
+            <button id="swiftnet-callback-close" class="text-gray-400 hover:text-white text-lg">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="space-y-4 text-center">
+            <p class="text-gray-300">Contact us to schedule your callback:</p>
+            <p class="text-white font-semibold">Phone: <a href="tel:+254769525570" class="text-blue-400 hover:underline">+254769525570</a></p>
+            <p class="text-white font-semibold">WhatsApp: <a href="https://wa.me/254769525570" target="_blank" class="text-blue-400 hover:underline">+254769525570</a></p>
+            <a href="https://wa.me/254769525570" target="_blank" class="w-full cta-btn py-3 rounded-lg font-semibold inline-block">
+                Message Us on WhatsApp <i class="fas fa-comment ml-2"></i>
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- Installation Modal -->
+<div id="swiftnet-install-modal" class="swiftnet-modal hidden fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
+    <div class="swiftnet-modal-glass bg-slate-800/90 backdrop-blur-sm rounded-xl max-w-md w-full p-6 border border-slate-700/50 animate-modal-in">
+        <div class="flex justify-between items-center mb-4">
+            <h3 class="text-xl font-bold text-white">Book Installation</h3>
+            <button id="swiftnet-install-close" class="text-gray-400 hover:text-white text-lg">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="space-y-4 text-center">
+            <p class="text-gray-300">Contact us to book your installation:</p>
+            <p class="text-white font-semibold">Phone: <a href="tel:+254769525570" class="text-purple-400 hover:underline">+254769525570</a></p>
+            <p class="text-white font-semibold">WhatsApp: <a href="https://wa.me/254769525570" target="_blank" class="text-purple-400 hover:underline">+254769525570</a></p>
+            <a href="https://wa.me/254769525570" target="_blank" class="w-full cta-btn py-3 rounded-lg font-semibold inline-block">
+                Message Us on WhatsApp <i class="fas fa-comment ml-2"></i>
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- Promo Popup -->
+<div id="swiftnet-promo-popup" class="swiftnet-popup hidden fixed bottom-4 right-4 z-50 max-w-xs w-full">
+    <div class="swiftnet-popup-glass bg-slate-800/90 backdrop-blur-sm rounded-xl p-6 border border-blue-500/30 shadow-2xl animate-slide-up">
+        <div class="flex justify-between items-start mb-3">
+            <h3 class="text-lg font-bold text-white flex items-center">
+                <i class="fas fa-bolt text-yellow-400 mr-2"></i>
+                Special Offer!
+            </h3>
+            <button id="swiftnet-promo-close" class="text-gray-400 hover:text-white text-lg">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <p class="text-gray-300 mb-4">Get <span class="font-bold text-yellow-400">50% OFF</span> installation when you sign up for our annual plan!</p>
+        <a href="https://wa.me/254769525570?text=I'm%20interested%20in%20the%2050%25%20off%20installation%20offer!" target="_blank" class="w-full cta-btn py-2 rounded-lg font-semibold text-sm inline-block">
+            Claim Offer <i class="fas fa-arrow-right ml-1"></i>
+        </a>
+    </div>
+</div>
+
+<!-- Coverage Popup -->
+<div id="swiftnet-coverage-popup" class="swiftnet-popup hidden fixed bottom-4 right-4 z-50 max-w-xs w-full">
+    <div class="swiftnet-popup-glass bg-slate-800/90 backdrop-blur-sm rounded-xl p-6 border border-purple-500/30 shadow-2xl animate-slide-up">
+        <div class="flex justify-between items-start mb-3">
+            <h3 class="text-lg font-bold text-white flex items-center">
+                <i class="fas fa-map-marker-alt text-purple-400 mr-2"></i>
+                New Coverage!
+            </h3>
+            <button id="swiftnet-coverage-close" class="text-gray-400 hover:text-white text-lg">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <p class="text-gray-300 mb-4">We've expanded to <span class="font-bold text-purple-400">South B</span>! Check if your area is covered.</p>
+        <a href="https://wa.me/254769525570?text=Please%20check%20if%20my%20area%20in%20South%20B%20is%20covered!" target="_blank" class="w-full secondary-btn py-2 rounded-lg font-semibold text-sm inline-block">
+            Check Coverage <i class="fas fa-search-location ml-1"></i>
+        </a>
+    </div>
+</div>
+
+<script>
+    // Ensure jQuery is loaded before running the script
+    if (typeof jQuery === 'undefined') {
+        console.error('jQuery is not loaded. Please include jQuery before this script.');
+    } else {
+        $(document).ready(function() {
+            // Benefits slider functionality
+            let currentSlide = 0;
+            const slides = $('.swiftnet-benefits-slide');
+            const totalSlides = slides.length; // 6 slides
+            
+            function updateSlider() {
+                const isSmallScreen = window.innerWidth < 640;
+                const slidesPerView = isSmallScreen ? 2 : 4;
+                const translatePercentage = (currentSlide * 100) / slidesPerView;
+                $('.swiftnet-benefits-slides').css('transform', `translateX(-${translatePercentage}%)`);
+                $('.swiftnet-slider-indicator').removeClass('bg-blue-400 w-4').addClass('bg-gray-600 w-2');
+                $(`.swiftnet-slider-indicator[data-slide="${currentSlide}"]`).removeClass('bg-gray-600 w-2').addClass('bg-blue-400 w-4');
+            }
+            
+            $('.swiftnet-slider-next').click(function() {
+                const isSmallScreen = window.innerWidth < 640;
+                const slidesPerView = isSmallScreen ? 2 : 4;
+                currentSlide = (currentSlide + 1) % (totalSlides - slidesPerView + 1);
+                updateSlider();
+            });
+            
+            $('.swiftnet-slider-prev').click(function() {
+                currentSlide = (currentSlide - 1 + (totalSlides - (window.innerWidth < 640 ? 2 : 4) + 1)) % (totalSlides - (window.innerWidth < 640 ? 2 : 4) + 1);
+                updateSlider();
+            });
+            
+            $('.swiftnet-slider-indicator').click(function() {
+                currentSlide = parseInt($(this).data('slide'));
+                updateSlider();
+            });
+            
+            let slideInterval = setInterval(() => {
+                const isSmallScreen = window.innerWidth < 640;
+                const slidesPerView = isSmallScreen ? 2 : 4;
+                currentSlide = (currentSlide + 1) % (totalSlides - slidesPerView + 1);
+                updateSlider();
+            }, 5000);
+            
+            $('.swiftnet-benefits-slider').hover(
+                function() { clearInterval(slideInterval); },
+                function() { 
+                    slideInterval = setInterval(() => {
+                        const isSmallScreen = window.innerWidth < 640;
+                        const slidesPerView = isSmallScreen ? 2 : 4;
+                        currentSlide = (currentSlide + 1) % (totalSlides - slidesPerView + 1);
+                        updateSlider();
+                    }, 5000);
+                }
+            );
+            
+            function animateBenefitCards() {
+                $('.swiftnet-benefit-card').each(function() {
+                    const cardTop = $(this).offset().top;
+                    const scrollTop = $(window).scrollTop();
+                    const windowHeight = $(window).height();
+                    if (cardTop < scrollTop + windowHeight - 100) {
+                        $(this).addClass('swiftnet-animate-fade-in-up');
+                    }
+                });
+            }
+            
+            animateBenefitCards();
+            updateSlider();
+            
+            $(window).scroll(function() {
+                animateBenefitCards();
+            });
+            
+            $(window).resize(function() {
+                updateSlider();
+            });
+
+            // CTA Modal and Popup Controls
+            $('#swiftnet-callback-btn').click(function(e) {
+                e.preventDefault();
+                $('#swiftnet-callback-modal').removeClass('hidden');
+                $('body').addClass('overflow-hidden');
+            });
+            
+            $('#swiftnet-callback-close').click(function(e) {
+                e.stopPropagation();
+                $('#swiftnet-callback-modal').addClass('hidden');
+                $('body').removeClass('overflow-hidden');
+            });
+            
+            $('#swiftnet-install-btn').click(function(e) {
+                e.preventDefault();
+                $('#swiftnet-install-modal').removeClass('hidden');
+                $('body').addClass('overflow-hidden');
+            });
+            
+            $('#swiftnet-install-close').click(function(e) {
+                e.stopPropagation();
+                $('#swiftnet-install-modal').addClass('hidden');
+                $('body').removeClass('overflow-hidden');
+            });
+            
+            $('#swiftnet-promo-close').click(function(e) {
+                e.stopPropagation();
+                $('#swiftnet-promo-popup').addClass('hidden');
+            });
+            
+            $('#swiftnet-coverage-close').click(function(e) {
+                e.stopPropagation();
+                $('#swiftnet-coverage-popup').addClass('hidden');
+            });
+            
+            // Show promo popup after 5 seconds
+            setTimeout(function() {
+                $('#swiftnet-promo-popup').removeClass('hidden');
+            }, 5000);
+            
+            // Show coverage popup at 50% scroll
+            let coverageShown = false;
+            $(window).scroll(function() {
+                if (!coverageShown && $(window).scrollTop() > $(document).height() / 2) {
+                    $('#swiftnet-coverage-popup').removeClass('hidden');
+                    coverageShown = true;
+                }
+            });
+            
+            // Close modals when clicking outside
+            $('.swiftnet-modal').click(function(e) {
+                if ($(e.target).hasClass('swiftnet-modal')) {
+                    $(this).addClass('hidden');
+                    $('body').removeClass('overflow-hidden');
+                }
+            });
+            
+            // Prevent modal content clicks from closing the modal
+            $('.swiftnet-modal-glass').click(function(e) {
+                e.stopPropagation();
+            });
+        });
+    }
+</script>
+
+<style>
+    /* Why Choose Us Styles */
+    .swiftnet-benefit-card {
+        box-sizing: border-box;
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.6s ease, transform 0.6s ease, background-color 0.3s ease;
+        width: 100%;
+        max-width: 100%;
+        overflow: hidden;
+    }
+    
+    .swiftnet-benefit-card.swiftnet-animate-fade-in-up {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    
+    .swiftnet-benefit-card:hover {
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    }
+    
+    .swiftnet-benefits-track {
+        width: 100%;
+        overflow: hidden;
+    }
+    
+    .swiftnet-benefits-slides {
+        display: flex;
+        transition: transform 0.5s ease;
+    }
+    
+    .swiftnet-benefits-slide {
+        flex-shrink: 0;
+        transition: all 0.5s ease;
+    }
+    
+    .swiftnet-slider-indicator {
+        transition: all 0.3s ease;
+    }
+    
+    .swiftnet-benefits-slide .grid {
+        display: grid;
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+        gap: 0.5rem;
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+    
+    .swiftnet-benefit-card h3 {
+        font-size: 1rem;
+        word-break: break-word;
+        overflow-wrap: break-word;
+        white-space: normal;
+    }
+    
+    .swiftnet-benefit-card p {
+        font-size: 0.7rem;
+        word-break: break-word;
+        overflow-wrap: break-word;
+        white-space: normal;
+    }
+    
+    @media (min-width: 640px) {
+        .swiftnet-benefits-slide {
+            width: 25%;
+        }
+        .swiftnet-benefits-slides {
+            width: 150%;
+        }
+        .swiftnet-benefits-slide .grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            padding: 0 0.5rem;
+        }
+    }
+    
+    @media (max-width: 639px) {
+        .swiftnet-benefits-slide {
+            width: 50%;
+            max-width: 100%;
+        }
+        .swiftnet-benefits-slides {
+            width: 300%;
+        }
+        .swiftnet-benefits-slide .grid {
+            grid-template-columns: repeat(1, minmax(0, 1fr));
+            padding: 0 1rem;
+            gap: 0.5rem;
+        }
+        .swiftnet-benefit-card {
+            padding: 0.5rem;
+        }
+        .swiftnet-benefit-card h3 {
+            font-size: 0.9rem;
+        }
+        .swiftnet-benefit-card p {
+            font-size: 0.65rem;
+        }
+        .swiftnet-benefit-card .w-8 {
+            width: 1.5rem;
+            height: 1.5rem;
+        }
+        .swiftnet-benefit-card .text-base {
+            font-size: 0.9rem;
+        }
+    }
+    
+    @media (max-width: 400px) {
+        .swiftnet-benefits-slide .grid {
+            padding: 0 0.5rem;
+        }
+        .swiftnet-benefit-card {
+            padding: 0.4rem;
+        }
+        .swiftnet-benefit-card h3 {
+            font-size: 0.85rem;
+        }
+        .swiftnet-benefit-card p {
+            font-size: 0.6rem;
+        }
+        .swiftnet-benefit-card .w-8 {
+            width: 1.25rem;
+            height: 1.25rem;
+        }
+        .swiftnet-benefit-card .text-base {
+            font-size: 0.8rem;
+        }
+    }
+    
+    .swiftnet-benefit-card:nth-child(1) { transition-delay: 0.1s; }
+    .swiftnet-benefit-card:nth-child(2) { transition-delay: 0.2s; }
+    .swiftnet-benefit-card:nth-child(3) { transition-delay: 0.3s; }
+    .swiftnet-benefit-card:nth-child(4) { transition-delay: 0.4s; }
+    .swiftnet-benefit-card:nth-child(5) { transition-delay: 0.5s; }
+    .swiftnet-benefit-card:nth-child(6) { transition-delay: 0.6s; }
+
+    /* Connect CTA Styles */
+    .swiftnet-cta-parallax {
+        background-attachment: fixed;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    
+    .swiftnet-cta-glass, .swiftnet-modal-glass, .swiftnet-popup-glass {
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+    }
+    
+    .swiftnet-cta-btn, .cta-btn, .secondary-btn {
+        transition: all 0.3s ease;
+        display: block;
+        text-align: center;
+    }
+    
+    .swiftnet-cta-btn:hover, .cta-btn:hover, .secondary-btn:hover {
+        transform: translateY(-3px);
+    }
+    
+    .cta-btn {
+        background: linear-gradient(to right, #3b82f6, #8b5cf6);
+        color: white;
+    }
+    
+    .secondary-btn {
+        background: linear-gradient(to right, #6b7280, #4b5563);
+        color: white;
+    }
+    
+    .animate-modal-in {
+        animation: modalIn 0.3s ease-out forwards;
+    }
+    
+    .animate-slide-up {
+        animation: slideUp 0.5s ease-out forwards;
+    }
+    
+    @keyframes modalIn {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    @keyframes slideUp {
+        from {
+            opacity: 0;
+            transform: translateY(50px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    /* Fix popup width and positioning */
+    .swiftnet-popup {
+        max-width: 20rem; /* Constrain width */
+        width: calc(100% - 2rem); /* Responsive width with margin */
+        margin: 1rem;
+    }
+    
+    @media (max-width: 640px) {
+        .swiftnet-popup {
+            max-width: 18rem;
+            bottom: 1rem;
+            right: 1rem;
+        }
+    }
+    
+    /* Ensure modals and popups have proper z-index and reset conflicting styles */
+    .swiftnet-modal, .swiftnet-popup {
+        z-index: 50;
+    }
+    
+    .swiftnet-modal-glass, .swiftnet-popup-glass {
+        position: relative;
+        z-index: 60;
+    }
+    
+    /* Close button styling */
+    .swiftnet-modal-glass button, .swiftnet-popup-glass button {
+        line-height: 1;
+        padding: 0.5rem;
+    }
+</style>
+
+
+<!-- Add this section after the CTA section -->
+<section id="swiftnet-gallery" class="relative py-20 bg-slate-900 overflow-hidden">
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">
+                <span class="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">Our Work</span> in Action
+            </h2>
+            <p class="text-lg text-gray-400 max-w-2xl mx-auto">
+                See real installations and happy customers across Nairobi
+            </p>
+        </div>
+        
+        <!-- Gallery Grid -->
+        <div class="swiftnet-gallery-grid grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+            <!-- Gallery Item 1 -->
+            <div class="swiftnet-gallery-item group overflow-hidden rounded-xl relative cursor-pointer">
+                <img src="https://images.unsplash.com/photo-1592921870789-04563d6b2699?ixlib=rb-4.0.3&auto=format&fit=crop&w=774&q=80" 
+                     alt="Fiber installation" 
+                     class="w-full h-64 object-cover transition-all duration-500 group-hover:scale-105">
+                <div class="swiftnet-gallery-overlay absolute inset-0 bg-black/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <i class="fas fa-search-plus text-white text-2xl"></i>
+                </div>
+                <div class="swiftnet-gallery-caption hidden">Fiber optic installation in Westlands</div>
+            </div>
+            
+            <!-- Gallery Item 2 -->
+            <div class="swiftnet-gallery-item group overflow-hidden rounded-xl relative cursor-pointer">
+                <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&auto=format&fit=crop&w=1740&q=80" 
+                     alt="Technician at work" 
+                     class="w-full h-64 object-cover transition-all duration-500 group-hover:scale-105">
+                <div class="swiftnet-gallery-overlay absolute inset-0 bg-black/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <i class="fas fa-search-plus text-white text-2xl"></i>
+                </div>
+                <div class="swiftnet-gallery-caption hidden">Our technician installing a router in Karen</div>
+            </div>
+            
+            <!-- Gallery Item 3 -->
+            <div class="swiftnet-gallery-item group overflow-hidden rounded-xl relative cursor-pointer">
+                <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-4.0.3&auto=format&fit=crop&w=1740&q=80" 
+                     alt="Office setup" 
+                     class="w-full h-64 object-cover transition-all duration-500 group-hover:scale-105">
+                <div class="swiftnet-gallery-overlay absolute inset-0 bg-black/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <i class="fas fa-search-plus text-white text-2xl"></i>
+                </div>
+                <div class="swiftnet-gallery-caption hidden">Business internet setup in Nairobi CBD</div>
+            </div>
+            
+            <!-- Gallery Item 4 -->
+            <div class="swiftnet-gallery-item group overflow-hidden rounded-xl relative cursor-pointer">
+                <img src="https://images.unsplash.com/photo-1623479322729-28b25c16b011?ixlib=rb-4.0.3&auto=format&fit=crop&w=1740&q=80" 
+                     alt="Network equipment" 
+                     class="w-full h-64 object-cover transition-all duration-500 group-hover:scale-105">
+                <div class="swiftnet-gallery-overlay absolute inset-0 bg-black/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <i class="fas fa-search-plus text-white text-2xl"></i>
+                </div>
+                <div class="swiftnet-gallery-caption hidden">High-quality network equipment</div>
+            </div>
+            
+            <!-- Gallery Item 5 -->
+            <div class="swiftnet-gallery-item group overflow-hidden rounded-xl relative cursor-pointer">
+                <img src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?ixlib=rb-4.0.3&auto=format&fit=crop&w=1740&q=80" 
+                     alt="WiFi installation" 
+                     class="w-full h-64 object-cover transition-all duration-500 group-hover:scale-105">
+                <div class="swiftnet-gallery-overlay absolute inset-0 bg-black/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <i class="fas fa-search-plus text-white text-2xl"></i>
+                </div>
+                <div class="swiftnet-gallery-caption hidden">Whole-home WiFi installation in Runda</div>
+            </div>
+            
+            <!-- Gallery Item 6 -->
+            <div class="swiftnet-gallery-item group overflow-hidden rounded-xl relative cursor-pointer">
+                <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=1740&q=80" 
+                     alt="Customer support" 
+                     class="w-full h-64 object-cover transition-all duration-500 group-hover:scale-105">
+                <div class="swiftnet-gallery-overlay absolute inset-0 bg-black/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <i class="fas fa-search-plus text-white text-2xl"></i>
+                </div>
+                <div class="swiftnet-gallery-caption hidden">Our support team assisting a customer</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Lightbox Modal -->
+<div id="swiftnet-lightbox" class="swiftnet-lightbox hidden fixed inset-0 bg-black/90 z-60 flex items-center justify-center p-4">
+    <div class="relative max-w-4xl w-full">
+        <button id="swiftnet-lightbox-close" class="absolute top-4 right-4 text-white text-2xl hover:text-blue-400 bg-black/50 rounded-full w-10 h-10 flex items-center justify-center">
+            <i class="fas fa-times"></i>
+        </button>
+        <button id="swiftnet-lightbox-prev" class="absolute left-0 top-1/2 transform -translate-y-1/2 text-white text-2xl bg-black/50 rounded-full w-10 h-10 flex items-center justify-center hover:bg-blue-500 ml-4">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+        <img id="swiftnet-lightbox-img" src="" alt="" class="w-full max-h-[80vh] object-contain">
+        <button id="swiftnet-lightbox-next" class="absolute right-0 top-1/2 transform -translate-y-1/2 text-white text-2xl bg-black/50 rounded-full w-10 h-10 flex items-center justify-center hover:bg-blue-500 mr-4">
+            <i class="fas fa-chevron-right"></i>
+        </button>
+        <div id="swiftnet-lightbox-caption" class="text-white text-center mt-4 text-lg"></div>
+    </div>
+</div>
+
+<!-- Support Section -->
+<section id="swiftnet-support" class="relative py-20 bg-slate-900 overflow-hidden">
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">
+                <span class="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">Support</span> Center
+            </h2>
+            <p class="text-lg text-gray-400 max-w-2xl mx-auto">
+                Quick help for common issues or contact our support team
+            </p>
+        </div>
+        
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <div class="lg:col-span-2">
+                <h3 class="text-xl font-semibold mb-6 text-white border-b border-slate-700 pb-2">Frequently Asked Questions</h3>
+                
+                <div class="swiftnet-support-accordion space-y-4">
+                    <div class="swiftnet-support-faq-item bg-slate-800/50 backdrop-blur-sm rounded-lg overflow-hidden border border-slate-700/50">
+                        <button class="swiftnet-support-faq-question w-full flex justify-between items-center p-4 text-left text-white hover:bg-slate-700/30 transition-all">
+                            <span>How long does installation take?</span>
+                            <i class="fas fa-chevron-down swiftnet-support-faq-icon transition-transform duration-300"></i>
+                        </button>
+                        <div class="swiftnet-support-faq-answer hidden p-4 pt-0 text-gray-300">
+                            <p>Standard installations are typically completed within 2-4 hours. For more complex setups, it may take up to 6 hours. Contact us at <a href="tel:+254769525570" class="text-blue-400 hover:underline">+254769525570</a> for a time estimate.</p>
+                        </div>
+                    </div>
+                    <div class="swiftnet-support-faq-item bg-slate-800/50 backdrop-blur-sm rounded-lg overflow-hidden border border-slate-700/50">
+                        <button class="swiftnet-support-faq-question w-full flex justify-between items-center p-4 text-left text-white hover:bg-slate-700/30 transition-all">
+                            <span>What do I do if my internet goes down?</span>
+                            <i class="fas fa-chevron-down swiftnet-support-faq-icon transition-transform duration-300"></i>
+                        </button>
+                        <div class="swiftnet-support-faq-answer hidden p-4 pt-0 text-gray-300">
+                            <p class="mb-2">Try these troubleshooting steps:</p>
+                            <ol class="list-decimal pl-5 space-y-1">
+                                <li>Restart your router (unplug for 30 seconds)</li>
+                                <li>Check all cable connections</li>
+                                <li>Test with a different device</li>
+                            </ol>
+                            <p class="mt-2">If the issue persists, contact our 24/7 support at <a href="tel:+254769525570" class="text-blue-400 hover:underline">+254769525570</a> or <a href="https://wa.me/254769525570" target="_blank" class="text-blue-400 hover:underline">WhatsApp us</a>.</p>
+                        </div>
+                    </div>
+                    <div class="swiftnet-support-faq-item bg-slate-800/50 backdrop-blur-sm rounded-lg overflow-hidden border border-slate-700/50">
+                        <button class="swiftnet-support-faq-question w-full flex justify-between items-center p-4 text-left text-white hover:bg-slate-700/30 transition-all">
+                            <span>Can I upgrade my plan later?</span>
+                            <i class="fas fa-chevron-down swiftnet-support-faq-icon transition-transform duration-300"></i>
+                        </button>
+                        <div class="swiftnet-support-faq-answer hidden p-4 pt-0 text-gray-300">
+                            <p>Yes! You can upgrade your plan at any time with no penalty. Contact us at <a href="https://wa.me/254769525570" target="_blank" class="text-blue-400 hover:underline">+254769525570</a> to make changes.</p>
+                        </div>
+                    </div>
+                    <div class="swiftnet-support-faq-item bg-slate-800/50 backdrop-blur-sm rounded-lg overflow-hidden border border-slate-700/50">
+                        <button class="swiftnet-support-faq-question w-full flex justify-between items-center p-4 text-left text-white hover:bg-slate-700/30 transition-all">
+                            <span>What payment methods do you accept?</span>
+                            <i class="fas fa-chevron-down swiftnet-support-faq-icon transition-transform duration-300"></i>
+                        </button>
+                        <div class="swiftnet-support-faq-answer hidden p-4 pt-0 text-gray-300">
+                            <p>We accept all major payment methods. For details, message us on <a href="https://wa.me/254769525570" target="_blank" class="text-blue-400 hover:underline">WhatsApp</a> or call <a href="tel:+254769525570" class="text-blue-400 hover:underline">+254769525570</a>.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div>
+                <h3 class="text-xl font-semibold mb-6 text-white border-b border-slate-700 pb-2">Contact Support</h3>
+                
+                <div class="swiftnet-support-contact-card bg-slate-800/50 backdrop-blur-sm rounded-xl p-6 border border-slate-700/50 mb-6">
+                    <div class="flex items-start mb-4">
+                        <div class="w-10 h-10 bg-blue-500/10 rounded-full flex items-center justify-center mr-4 mt-1">
+                            <i class="fas fa-phone-alt text-blue-400"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-white">24/7 Support Line</h4>
+                            <p class="text-gray-400"><a href="tel:+254769525570" class="text-blue-400 hover:underline">+254769525570</a></p>
+                        </div>
+                    </div>
+                    <div class="flex items-start mb-4">
+                        <div class="w-10 h-10 bg-green-500/10 rounded-full flex items-center justify-center mr-4 mt-1">
+                            <i class="fas fa-comment-dots text-green-400"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-white">WhatsApp Chat</h4>
+                            <p class="text-gray-400">Available 24/7</p>
+                            <a href="https://wa.me/254769525570" target="_blank" class="text-blue-400 hover:text-blue-300 text-sm mt-1 flex items-center">
+                                Start Chat <i class="fas fa-arrow-right ml-1 text-xs"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="flex items-start">
+                        <div class="w-10 h-10 bg-purple-500/10 rounded-full flex items-center justify-center mr-4 mt-1">
+                            <i class="fas fa-envelope text-purple-400"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-white">WhatsApp for Email Queries</h4>
+                            <p class="text-gray-400">Message us on WhatsApp</p>
+                            <p class="text-gray-400 text-sm mt-1">Response within 1 hour</p>
+                            <a href="https://wa.me/254769525570" target="_blank" class="text-blue-400 hover:text-blue-300 text-sm mt-1 flex items-center">
+                                Send Message <i class="fas fa-arrow-right ml-1 text-xs"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="swiftnet-support-hours bg-slate-800/50 backdrop-blur-sm rounded-xl p-6 border border-slate-700/50">
+                    <h4 class="font-semibold text-white mb-4">Support Hours</h4>
+                    <div class="space-y-3">
+                        <div class="flex justify-between">
+                            <span class="text-gray-400">Technical Support:</span>
+                            <span class="text-white">24/7</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-400">Billing Inquiries:</span>
+                            <span class="text-white">Mon-Fri, 8AM-5PM</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-400">Installation Bookings:</span>
+                            <span class="text-white">Daily, 7AM-7PM</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <a href="https://wa.me/254769525570?text=I%20need%20to%20open%20a%20support%20ticket" target="_blank" class="w-full swiftnet-support-btn cta-btn mt-6 py-3 rounded-lg font-semibold inline-block">
+                    <i class="fas fa-headset mr-2"></i> Open Support Ticket
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    $(document).ready(function() {
+        // Gallery Lightbox Functionality
+        let currentImageIndex = 0;
+        const galleryItems = $('.swiftnet-gallery-item');
+        
+        // Open lightbox
+        galleryItems.click(function(e) {
+            e.preventDefault();
+            currentImageIndex = $(this).index();
+            updateLightbox();
+            $('#swiftnet-lightbox').removeClass('hidden');
+            $('body').addClass('overflow-hidden');
+        });
+        
+        // Close lightbox
+        $('#swiftnet-lightbox-close').click(function(e) {
+            e.stopPropagation();
+            $('#swiftnet-lightbox').addClass('hidden');
+            $('body').removeClass('overflow-hidden');
+        });
+        
+        // Next image
+        $('#swiftnet-lightbox-next').click(function(e) {
+            e.stopPropagation();
+            currentImageIndex = (currentImageIndex + 1) % galleryItems.length;
+            updateLightbox();
+        });
+        
+        // Previous image
+        $('#swiftnet-lightbox-prev').click(function(e) {
+            e.stopPropagation();
+            currentImageIndex = (currentImageIndex - 1 + galleryItems.length) % galleryItems.length;
+            updateLightbox();
+        });
+        
+        // Update lightbox content
+        function updateLightbox() {
+            const currentItem = galleryItems.eq(currentImageIndex);
+            const imgSrc = currentItem.find('img').attr('src');
+            const caption = currentItem.find('.swiftnet-gallery-caption').text();
+            
+            $('#swiftnet-lightbox-img').attr('src', imgSrc);
+            $('#swiftnet-lightbox-caption').text(caption);
+        }
+        
+        // Keyboard navigation
+        $(document).keydown(function(e) {
+            if (!$('#swiftnet-lightbox').hasClass('hidden')) {
+                if (e.key === 'Escape') {
+                    $('#swiftnet-lightbox').addClass('hidden');
+                    $('body').removeClass('overflow-hidden');
+                } else if (e.key === 'ArrowRight') {
+                    currentImageIndex = (currentImageIndex + 1) % galleryItems.length;
+                    updateLightbox();
+                } else if (e.key === 'ArrowLeft') {
+                    currentImageIndex = (currentImageIndex - 1 + galleryItems.length) % galleryItems.length;
+                    updateLightbox();
+                }
+            }
+        });
+        
+        // Close lightbox when clicking background
+        $('#swiftnet-lightbox').click(function(e) {
+            if ($(e.target).is('#swiftnet-lightbox')) {
+                $('#swiftnet-lightbox').addClass('hidden');
+                $('body').removeClass('overflow-hidden');
+            }
+        });
+
+        // FAQ Accordion
+        $('.swiftnet-support-faq-question').click(function() {
+            const answer = $(this).next('.swiftnet-support-faq-answer');
+            const icon = $(this).find('.swiftnet-support-faq-icon');
+            
+            $('.swiftnet-support-faq-answer').not(answer).slideUp(300);
+            $('.swiftnet-support-faq-icon').not(icon).removeClass('transform rotate-180');
+            
+            answer.slideToggle(300);
+            icon.toggleClass('transform rotate-180');
+        });
+    });
+</script>
+
+<style>
+    /* Gallery Section Styles */
+    .swiftnet-gallery-item {
+        transition: all 0.3s ease;
+    }
+    
+    .swiftnet-gallery-item:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    }
+    
+    .swiftnet-gallery-overlay {
+        transition: opacity 0.3s ease;
+    }
+    
+    .swiftnet-lightbox {
+        z-index: 1000;
+    }
+    
+    .swiftnet-lightbox img {
+        transition: opacity 0.3s ease;
+    }
+    
+    /* Support Section Styles */
+    .swiftnet-support-faq-item {
+        transition: all 0.3s ease;
+    }
+    
+    .swiftnet-support-faq-question {
+        transition: background-color 0.3s ease;
+    }
+    
+    .swiftnet-support-faq-answer {
+        transition: all 0.3s ease;
+    }
+    
+    .swiftnet-support-contact-card {
+        transition: all 0.3s ease;
+    }
+    
+    .swiftnet-support-contact-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+    
+    /* CTA Button Styles (for support ticket button) */
+    .cta-btn {
+        background: linear-gradient(to right, #3b82f6, #8b5cf6);
+        color: white;
+        transition: all 0.3s ease;
+        display: block;
+        text-align: center;
+    }
+    
+    .cta-btn:hover {
+        transform: translateY(-3px);
+    }
+</style>
+
+
+
+<!-- Add this section as the last section before closing body tag -->
+<footer id="swiftnet-footer" class="relative bg-slate-900/80 backdrop-blur-sm border-t border-slate-700/50">
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <!-- Footer Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+            <!-- Company Info -->
+            <div class="swiftnet-footer-col">
+                <div class="flex items-center mb-4">
+                    <i class="fas fa-bolt text-blue-400 text-2xl mr-2"></i>
+                    <span class="text-xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">Swiftnet</span>
+                </div>
+                <p class="text-gray-400 mb-4">
+                    Providing fast, reliable internet services across Nairobi since 2015. We're committed to connecting Kenya with premium fiber and wireless solutions.
+                </p>
+                <div class="flex space-x-4">
+                    <a href="#" class="swiftnet-social-icon bg-slate-800/50 hover:bg-blue-500/20 text-white w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 hover:-translate-y-1">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="swiftnet-social-icon bg-slate-800/50 hover:bg-sky-500/20 text-white w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 hover:-translate-y-1">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="swiftnet-social-icon bg-slate-800/50 hover:bg-pink-500/20 text-white w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 hover:-translate-y-1">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://wa.me/254769525570" class="swiftnet-social-icon bg-slate-800/50 hover:bg-green-500/20 text-white w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 hover:-translate-y-1">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Quick Links -->
+            <div class="swiftnet-footer-col">
+                <h3 class="text-lg font-semibold text-white mb-4">Quick Links</h3>
+                <ul class="space-y-2">
+                    <li><a href="#" class="text-gray-400 hover:text-blue-400 transition-colors duration-300">Home</a></li>
+                    <li><a href="#services" class="text-gray-400 hover:text-blue-400 transition-colors duration-300">Services</a></li>
+                    <li><a href="#coverage" class="text-gray-400 hover:text-blue-400 transition-colors duration-300">Coverage Map</a></li>
+                    <li><a href="#pricing" class="text-gray-400 hover:text-blue-400 transition-colors duration-300">Pricing</a></li>
+                    <li><a href="#about" class="text-gray-400 hover:text-blue-400 transition-colors duration-300">About Us</a></li>
+                    <li><a href="#swiftnet-support" class="text-gray-400 hover:text-blue-400 transition-colors duration-300">Support</a></li>
+                </ul>
+            </div>
+            
+            <!-- Contact Info -->
+            <div class="swiftnet-footer-col">
+                <h3 class="text-lg font-semibold text-white mb-4">Contact Us</h3>
+                <ul class="space-y-3">
+                    <li class="flex items-start">
+                        <i class="fas fa-map-marker-alt text-blue-400 mt-1 mr-3"></i>
+                        <span class="text-gray-400">Nairobi Nyayo Estate</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-phone-alt text-blue-400 mt-1 mr-3"></i>
+                        <a href="tel:+254769525570" class="text-gray-400 hover:text-blue-400">+254769525570</a>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-envelope text-blue-400 mt-1 mr-3"></i>
+                        <a href="https://wa.me/254769525570" class="text-gray-400 hover:text-blue-400">Message us on WhatsApp</a>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-clock text-blue-400 mt-1 mr-3"></i>
+                        <span class="text-gray-400">Mon-Fri: 8AM - 5PM<br>Sat: 9AM - 2PM</span>
+                    </li>
+                </ul>
+            </div>
+            
+            <!-- Newsletter & CTA -->
+            <div class="swiftnet-footer-col">
+                <h3 class="text-lg font-semibold text-white mb-4">Stay Updated</h3>
+                <p class="text-gray-400 mb-4">
+                    Subscribe to our newsletter for the latest offers and service updates.
+                </p>
+                <form class="mb-6">
+                    <div class="flex">
+                        <input type="email" placeholder="Your email" class="bg-slate-800/50 text-white px-4 py-2 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-blue-500 w-full">
+                        <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-r-lg transition-colors duration-300">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </form>
+                
+                <div class="space-y-3">
+                    <a href="https://wa.me/254769525570" class="flex items-center justify-center bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg transition-colors duration-300">
+                        <i class="fab fa-whatsapp mr-2"></i> WhatsApp Us
+                    </a>
+                    <a href="tel:+254769525570" class="flex items-center justify-center bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg transition-colors duration-300">
+                        <i class="fas fa-phone-alt mr-2"></i> Call Now
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Copyright -->
+        <div class="border-t border-slate-700/50 mt-10 pt-6 flex flex-col md:flex-row justify-between items-center">
+            <p class="text-gray-500 text-sm mb-4 md:mb-0">
+                © 2025 Swiftnet Internet Services. All rights reserved.
+            </p>
+            <div class="flex space-x-6">
+                <a href="#" class="text-gray-500 hover:text-blue-400 text-sm transition-colors duration-300">Privacy Policy</a>
+                <a href="#" class="text-gray-500 hover:text-blue-400 text-sm transition-colors duration-300">Terms of Service</a>
+                <a href="#" class="text-gray-500 hover:text-blue-400 text-sm transition-colors duration-300">Sitemap</a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Back to Top Button -->
+    <button id="swiftnet-back-to-top" class="hidden fixed bottom-6 right-6 w-12 h-12 bg-blue-500/80 hover:bg-blue-600/90 backdrop-blur-sm text-white rounded-full shadow-lg transition-all duration-300 opacity-0 scale-90">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+</footer>
+
+<script>
+    $(document).ready(function() {
+        // Back to top button
+        $(window).scroll(function() {
+            if ($(this).scrollTop() > 300) {
+                $('#swiftnet-back-to-top').removeClass('hidden opacity-0 scale-90').addClass('opacity-100 scale-100');
+            } else {
+                $('#swiftnet-back-to-top').removeClass('opacity-100 scale-100').addClass('opacity-0 scale-90');
+            }
+        });
+        
+        $('#swiftnet-back-to-top').click(function() {
+            $('html, body').animate({scrollTop: 0}, 500);
+            return false;
+        });
+        
+        // Social icon animations
+        $('.swiftnet-social-icon').hover(
+            function() {
+                $(this).addClass('shadow-lg');
+                $(this).find('i').addClass('animate-spin');
+            },
+            function() {
+                $(this).removeClass('shadow-lg');
+                $(this).find('i').removeClass('animate-spin');
+            }
+        );
+    });
+</script>
+
+<style>
+    /* Footer Styles */
+    #swiftnet-footer {
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+    }
+    
+    .swiftnet-footer-col {
+        transition: all 0.3s ease;
+    }
+    
+    .swiftnet-social-icon {
+        transition: all 0.3s ease;
+    }
+    
+    .swiftnet-social-icon:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+    
+    .swiftnet-social-icon i {
+        transition: transform 0.3s ease;
+    }
+    
+    #swiftnet-back-to-top {
+        z-index: 50;
+        transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    }
+    
+    #swiftnet-back-to-top:hover {
+        transform: translateY(-3px) scale(1.1);
+    }
+</style>
+</body>
+</html>
